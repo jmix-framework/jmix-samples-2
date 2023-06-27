@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://bookListView.title"
+      focusComponent="booksDataGrid">
+    <data readOnly="true">
+        <collection id="booksDc"
+                    class="com.company.library.entity.Book">
+            <fetchPlan extends="_base">
+                <property name="authors" fetchPlan="_base"/>
+                <property name="literatureType" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="booksDl">
+                <query>
+                    <![CDATA[select e from Book e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="booksDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="booksDataGrid.create"/>
+            <button id="editBtn" action="booksDataGrid.edit"/>
+            <button id="removeBtn" action="booksDataGrid.remove"/>
+            <button id="runReportsBtn" action="booksDataGrid.runReports"/>
+            <button id="runBtn" action="booksDataGrid.run"/>
+            <simplePagination id="pagination" dataLoader="booksDl"/>
+        </hbox>
+        <dataGrid id="booksDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="booksDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+                <action id="runReports" type="report_runListEntityReport"
+                        text="Print details"/>
+                <action id="run" type="report_runReport"/>
+            </actions>
+            <columns>
+                <column property="name"/>
+                <column property="summary"/>
+                <column property="literatureType"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

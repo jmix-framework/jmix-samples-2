@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="library">
+        <createTable tableName="AUTHOR">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_AUTHOR"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(50)"/>
+            <column name="LAST_NAME" type="VARCHAR(50)"/>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="library">
+        <createTable tableName="BOOK">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOOK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SUMMARY" type="CLOB"/>
+            <column name="LITERATURE_TYPE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="library">
+        <createTable tableName="BOOK_AUTHOR_LINK">
+            <column name="AUTHOR_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOOK_AUTHOR_LINK"/>
+            </column>
+            <column name="BOOK_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOOK_AUTHOR_LINK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="library">
+        <createTable tableName="BOOK_INSTANCE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOOK_INSTANCE"/>
+            </column>
+            <column name="IS_REFERENCE" type="BOOLEAN"/>
+            <column name="INVENTORY_NUMBER" type="BIGINT"/>
+            <column name="BOOK_COUNT" type="INT"/>
+            <column name="BOOK_PUBLICATION_ID" type="UUID"/>
+            <column name="LIBRARY_DEPARTMENT_ID" type="UUID"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="library">
+        <createTable tableName="BOOK_PUBLICATION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOOK_PUBLICATION"/>
+            </column>
+            <column name="YEAR_" type="INT"/>
+            <column name="BOOK_ID" type="UUID"/>
+            <column name="PUBLISHER_ID" type="UUID"/>
+            <column name="CITY_ID" type="UUID"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="library">
+        <createTable tableName="CITY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CITY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="library">
+        <createTable tableName="INIT_FLAGS">
+            <column name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_INIT_FLAGS"/>
+            </column>
+            <column name="REPORTS_INITIALIZED" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="library">
+        <createTable tableName="LIBRARY_DEPARTMENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_LIBRARY_DEPARTMENT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="library">
+        <createTable tableName="LITERATURE_TYPE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_LITERATURE_TYPE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="10" author="library">
+        <createTable tableName="PUBLISHER">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PUBLISHER"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="11" author="library">
+        <addColumn tableName="USER_">
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="12" author="library">
+        <createIndex indexName="IDX_BOOK_INSTANCE_BOOK_PUBLICATION" tableName="BOOK_INSTANCE">
+            <column name="BOOK_PUBLICATION_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="BOOK_PUBLICATION_ID" baseTableName="BOOK_INSTANCE"
+                                 constraintName="FK_BOOK_INSTANCE_ON_BOOK_PUBLICATION" referencedColumnNames="ID"
+                                 referencedTableName="BOOK_PUBLICATION"/>
+    </changeSet>
+    <changeSet id="13" author="library">
+        <createIndex indexName="IDX_BOOK_INSTANCE_LIBRARY_DEPARTMENT" tableName="BOOK_INSTANCE">
+            <column name="LIBRARY_DEPARTMENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="LIBRARY_DEPARTMENT_ID" baseTableName="BOOK_INSTANCE"
+                                 constraintName="FK_BOOK_INSTANCE_ON_LIBRARY_DEPARTMENT" referencedColumnNames="ID"
+                                 referencedTableName="LIBRARY_DEPARTMENT"/>
+    </changeSet>
+    <changeSet id="14" author="library">
+        <createIndex indexName="IDX_BOOK_LITERATURE_TYPE" tableName="BOOK">
+            <column name="LITERATURE_TYPE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="LITERATURE_TYPE_ID" baseTableName="BOOK"
+                                 constraintName="FK_BOOK_ON_LITERATURE_TYPE" referencedColumnNames="ID"
+                                 referencedTableName="LITERATURE_TYPE"/>
+    </changeSet>
+    <changeSet id="15" author="library">
+        <createIndex indexName="IDX_BOOK_PUBLICATION_BOOK" tableName="BOOK_PUBLICATION">
+            <column name="BOOK_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="BOOK_ID" baseTableName="BOOK_PUBLICATION"
+                                 constraintName="FK_BOOK_PUBLICATION_ON_BOOK" referencedColumnNames="ID"
+                                 referencedTableName="BOOK"/>
+    </changeSet>
+    <changeSet id="16" author="library">
+        <createIndex indexName="IDX_BOOK_PUBLICATION_CITY" tableName="BOOK_PUBLICATION">
+            <column name="CITY_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CITY_ID" baseTableName="BOOK_PUBLICATION"
+                                 constraintName="FK_BOOK_PUBLICATION_ON_CITY" referencedColumnNames="ID"
+                                 referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet id="17" author="library">
+        <createIndex indexName="IDX_BOOK_PUBLICATION_PUBLISHER" tableName="BOOK_PUBLICATION">
+            <column name="PUBLISHER_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="PUBLISHER_ID" baseTableName="BOOK_PUBLICATION"
+                                 constraintName="FK_BOOK_PUBLICATION_ON_PUBLISHER" referencedColumnNames="ID"
+                                 referencedTableName="PUBLISHER"/>
+    </changeSet>
+    <changeSet id="18" author="library">
+        <addForeignKeyConstraint baseColumnNames="AUTHOR_ID" baseTableName="BOOK_AUTHOR_LINK"
+                                 constraintName="FK_BOOAUT_ON_AUTHOR" referencedColumnNames="ID"
+                                 referencedTableName="AUTHOR"/>
+    </changeSet>
+    <changeSet id="19" author="library">
+        <addForeignKeyConstraint baseColumnNames="BOOK_ID" baseTableName="BOOK_AUTHOR_LINK"
+                                 constraintName="FK_BOOAUT_ON_BOOK" referencedColumnNames="ID"
+                                 referencedTableName="BOOK"/>
+    </changeSet>
+</databaseChangeLog>

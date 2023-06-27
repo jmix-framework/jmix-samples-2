@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://bookDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="bookDc"
+                  class="com.company.library.entity.Book">
+            <fetchPlan extends="_base">
+                <property name="authors" fetchPlan="_base"/>
+                <property name="literatureType" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="authorsDc" property="authors"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="bookDc">
+            <entityPicker id="literatureTypeField" property="literatureType">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <textField id="nameField" property="name"/>
+            <textArea id="summaryField" height="9.5em" property="summary"/>
+        </formLayout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="authorsDataGrid.add"/>
+            <button action="authorsDataGrid.exclude"/>
+        </hbox>
+        <dataGrid id="authorsDataGrid" dataContainer="authorsDc" width="100%" minHeight="20em">
+            <actions>
+                <action id="add" type="list_add"/>
+                <action id="exclude" type="list_exclude"/>
+            </actions>
+            <columns>
+                <column property="firstName"/>
+                <column property="lastName"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+            <button id="reportButton" icon="PRINT"/>
+        </hbox>
+    </layout>
+</view>

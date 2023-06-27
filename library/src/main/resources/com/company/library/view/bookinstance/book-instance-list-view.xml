@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://bookInstanceListView.title"
+      focusComponent="bookInstancesDataGrid">
+    <data readOnly="true">
+        <collection id="bookInstancesDc"
+                    class="com.company.library.entity.BookInstance">
+            <fetchPlan extends="_base">
+                <property name="bookPublication" fetchPlan="_instance_name">
+                    <property name="publisher" fetchPlan="_base"/>
+                </property>
+                <property name="libraryDepartment" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="bookInstancesDl">
+                <query>
+                    <![CDATA[select e from BookInstance e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="bookInstancesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="bookInstancesDataGrid.create"/>
+            <button id="editBtn" action="bookInstancesDataGrid.edit"/>
+            <button id="removeBtn" action="bookInstancesDataGrid.remove"/>
+            <button id="runReportsBtn" action="bookInstancesDataGrid.runReports"/>
+            <simplePagination id="pagination" dataLoader="bookInstancesDl"/>
+        </hbox>
+        <dataGrid id="bookInstancesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="bookInstancesDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+                <action id="runReports" type="report_runListEntityReport"/>
+            </actions>
+            <columns>
+                <column property="isReference"/>
+                <column property="inventoryNumber"/>
+                <column property="bookCount"/>
+                <column property="bookPublication"/>
+                <column property="libraryDepartment"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

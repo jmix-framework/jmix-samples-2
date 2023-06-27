@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="application" title="msg://com.company.library/menu.application.title" opened="true">
+        <item view="User.list" title="msg://com.company.library.view.user/UserListView.title"/>
+        <item view="Publisher.list" title="msg://com.company.library.view.publisher/publisherListView.title"/>
+        <item view="LiteratureType.list"
+              title="msg://com.company.library.view.literaturetype/literatureTypeListView.title"/>
+        <item view="LibraryDepartment.list"
+              title="msg://com.company.library.view.librarydepartment/libraryDepartmentListView.title"/>
+        <item view="City.list" title="msg://com.company.library.view.city/cityListView.title"/>
+        <item view="Author.list" title="msg://com.company.library.view.author/authorListView.title"/>
+        <item view="Book.list" title="msg://com.company.library.view.book/bookListView.title"/>
+        <item view="BookInstance.list" title="msg://com.company.library.view.bookinstance/bookInstanceListView.title"/>
+        <item view="BookPublication.list"
+              title="msg://com.company.library.view.bookpublication/bookPublicationListView.title"/>
+    </menu>
+
+</menu-config>

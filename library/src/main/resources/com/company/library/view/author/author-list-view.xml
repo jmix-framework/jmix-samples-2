@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://authorListView.title"
+      focusComponent="authorsDataGrid">
+    <data readOnly="true">
+        <collection id="authorsDc"
+                    class="com.company.library.entity.Author">
+            <fetchPlan extends="_base"/>
+            <loader id="authorsDl">
+                <query>
+                    <![CDATA[select e from Author e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="authorsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="authorsDataGrid.create"/>
+            <button id="editBtn" action="authorsDataGrid.edit"/>
+            <button id="removeBtn" action="authorsDataGrid.remove"/>
+            <button id="runReportsBtn" action="authorsDataGrid.runReports"/>
+            <simplePagination id="pagination" dataLoader="authorsDl"/>
+        </hbox>
+        <dataGrid id="authorsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="authorsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+                <action id="runReports" type="report_runListEntityReport"/>
+            </actions>
+            <columns>
+                <column property="firstName"/>
+                <column property="lastName"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

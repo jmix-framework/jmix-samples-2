@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://bookInstanceDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="bookInstanceDc"
+                  class="com.company.library.entity.BookInstance">
+            <fetchPlan extends="_base">
+                <property name="bookPublication" fetchPlan="_instance_name">
+                    <property name="publisher" fetchPlan="_base"/>
+                </property>
+                <property name="libraryDepartment" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="bookInstanceDc">
+            <checkbox id="isReferenceField" property="isReference"/>
+            <textField id="inventoryNumberField" property="inventoryNumber"/>
+            <textField id="bookCountField" property="bookCount"/>
+            <entityPicker id="bookPublicationField" property="bookPublication">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker id="libraryDepartmentField" property="libraryDepartment">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

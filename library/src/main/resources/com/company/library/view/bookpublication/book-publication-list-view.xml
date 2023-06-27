@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://bookPublicationListView.title"
+      focusComponent="bookPublicationsDataGrid">
+    <data readOnly="true">
+        <collection id="bookPublicationsDc"
+                    class="com.company.library.entity.BookPublication">
+            <fetchPlan extends="_base">
+                <property name="publisher" fetchPlan="_base"/>
+                <property name="city" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="bookPublicationsDl">
+                <query>
+                    <![CDATA[select e from BookPublication e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="bookPublicationsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="bookPublicationsDataGrid.create"/>
+            <button id="editBtn" action="bookPublicationsDataGrid.edit"/>
+            <button id="removeBtn" action="bookPublicationsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="bookPublicationsDl"/>
+        </hbox>
+        <dataGrid id="bookPublicationsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="bookPublicationsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="year"/>
+                <column property="book"/>
+                <column property="publisher"/>
+                <column property="city"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>
