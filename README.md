@@ -1,4 +1,6 @@
-# Jmix Samples
+# Jmix Samples 2
+
+**These samples are for Jmix v.2. If you need samples for Jmix v.1, see [jmix-samples](https://github.com/jmix-framework/jmix-samples).**
 
 This repository contains a collection of example projects that can help you to learn Jmix features and to find solutions to typical problems.   
 
