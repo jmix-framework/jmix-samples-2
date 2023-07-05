@@ -4,7 +4,7 @@
     <menu id="application" title="msg://com.company.externaldata/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.externaldata.view.user/UserListView.title"/>
         <item view="Project.list" title="msg://com.company.externaldata.view.project/projectListView.title"/>
-        <item view="Task_.list" title="msg://com.company.externaldata.view.task/taskListView.title"/>
+        <item view="Task.list" title="msg://com.company.externaldata.view.task/taskListView.title"/>
     </menu>
 
 </menu-config>
