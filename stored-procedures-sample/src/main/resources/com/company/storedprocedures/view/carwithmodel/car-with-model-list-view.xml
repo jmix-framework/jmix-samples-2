@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://carWithModelListView.title"
+      focusComponent="carWithModelsDataGrid">
+    <data readOnly="true">
+        <collection id="carWithModelsDc"
+                    class="com.company.storedprocedures.entity.CarWithModel">
+            <loader id="carWithModelsDl"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <integerField id="yearFilterField" label="msg://year" width="10em" />
+
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="editBtn" action="carWithModelsDataGrid.edit"/>
+            <button id="refreshBtn" action="carWithModelsDataGrid.refresh"/>
+            <simplePagination id="pagination" dataLoader="carWithModelsDl"/>
+        </hbox>
+        <dataGrid id="carWithModelsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="carWithModelsDc">
+            <actions>
+                <action id="edit" type="list_edit"/>
+                <action id="refresh" type="list_refresh"/>
+            </actions>
+            <columns>
+                <column property="vin"/>
+                <column property="year"/>
+                <column property="model"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

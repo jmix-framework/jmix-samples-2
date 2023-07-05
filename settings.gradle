@@ -2,5 +2,5 @@ rootProject.name = 'jmix-samples-2'
 
 includeBuild 'external-data-sample'
 includeBuild 'external-data-service'
-
 includeBuild 'reports-sample'
+includeBuild 'stored-procedures-sample'

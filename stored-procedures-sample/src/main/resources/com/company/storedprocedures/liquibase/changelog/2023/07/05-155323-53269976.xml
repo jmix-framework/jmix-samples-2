@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="stored-procedures-sample">
+        <createTable tableName="CAR">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CAR"/>
+            </column>
+            <column name="VIN" type="VARCHAR(255)"/>
+            <column name="YEAR_" type="INT"/>
+            <column name="MODEL_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="stored-procedures-sample">
+        <createTable tableName="MODEL">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MODEL"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="stored-procedures-sample">
+        <createIndex indexName="IDX_CAR_MODEL_ID" tableName="CAR">
+            <column name="MODEL_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="MODEL_ID" baseTableName="CAR" constraintName="FK_CAR_ON_MODEL"
+                                 referencedColumnNames="ID" referencedTableName="MODEL"/>
+    </changeSet>
+
+    <changeSet id="4" author="stored-procedures-sample" dbms="postgresql">
+        <createProcedure procedureName="car_with_model_by_year">
+            create or replace function get_cars_with_model_by_year(year_ int)
+            returns table(id UUID, vin text, year_ int, model text) language SQL
+            as $$
+            select c.id, c.vin, c.year_, m.name
+            from CAR c left join MODEL m on c.model_id = m.id where c.year_ = $1
+            $$
+        </createProcedure>
+    </changeSet>
+
+    <changeSet id="5" author="stored-procedures-sample" dbms="postgresql">
+        <createProcedure procedureName="car_by_year">
+            create or replace procedure save_car(car_vin varchar(255), car_year integer)
+            language plpgsql
+            as  $$
+            begin
+            update CAR set YEAR_ = car_year
+            where VIN = car_vin;
+            end  $$
+        </createProcedure>
+    </changeSet>
+
+    <changeSet id="6" author="stored-procedures-sample" dbms="postgresql">
+        <createProcedure procedureName="car_by_year">
+            create or replace function get_cars_by_year(year_ int)
+            returns table(id UUID, vin text, year_ int) language SQL
+            as $$
+            select c.id, c.vin, c.year_
+            from CAR c where c.year_ = $1
+            $$
+        </createProcedure>
+    </changeSet>
+
+    <changeSet id="7" author="stored-procedures-sample">
+        <insert tableName="MODEL">
+            <column name="id">5509e0cb-5571-8aa9-5267-40dd76b70c1a</column>
+            <column name="name">Volkswagen Tiguan</column>
+        </insert>
+        <insert tableName="MODEL">
+            <column name="id">7599c0b7-2666-54ba-7344-0425f24bf143</column>
+            <column name="name">Audi Q7</column>
+        </insert>
+        <insert tableName="CAR">
+            <column name="id">6d2e435a-7a72-722e-eb77-8e915b575e14</column>
+            <column name="year_">2021</column>
+            <column name="vin">T-001</column>
+            <column name="model_id">5509e0cb-5571-8aa9-5267-40dd76b70c1a</column>
+        </insert>
+        <insert tableName="CAR">
+            <column name="id">3953f947-27e0-f652-ac06-b49bf6a1d76f</column>
+            <column name="year_">2020</column>
+            <column name="vin">T-002</column>
+            <column name="model_id">5509e0cb-5571-8aa9-5267-40dd76b70c1a</column>
+        </insert>
+        <insert tableName="CAR">
+            <column name="id">7e978037-2798-592c-6d7a-e24518d14f35</column>
+            <column name="year_">2021</column>
+            <column name="vin">Q-001</column>
+            <column name="model_id">7599c0b7-2666-54ba-7344-0425f24bf143</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -11,5 +11,6 @@ To work with an example, clone the repository and open the respective folder in 
 <!-- - [Social Login](social-login-sample) project demonstrates how to implement additional authentication through external providers: Google and GitHub. -->
 <!-- - [Stored Procedures](stored-procedures-sample) project shows how you can call database stored procedures for loading and saving data. -->
 - [Reports](reports-sample) sample project is used in the [Reports add-on documentation](https://docs.jmix.io/jmix/reports/index.html) .
+- [Stored Procedures](stored-procedures-sample) project shows how you can call database stored procedures for loading and saving data.
 
 <!-- See also the [Jmix UI Samples](https://demo.jmix.io/ui-samples) web application which contains lots of examples related to UI. -->

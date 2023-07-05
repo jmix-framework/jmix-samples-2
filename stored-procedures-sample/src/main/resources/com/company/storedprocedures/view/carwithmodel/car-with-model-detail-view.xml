@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://carWithModelDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="carWithModelDc"
+                  class="com.company.storedprocedures.entity.CarWithModel">
+            <loader id="carWithModelDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="carWithModelDc">
+            <textField id="vinField" property="vin" readOnly="true"/>
+            <integerField id="yearField" property="year"/>
+            <textField id="modelField" property="model" readOnly="true"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

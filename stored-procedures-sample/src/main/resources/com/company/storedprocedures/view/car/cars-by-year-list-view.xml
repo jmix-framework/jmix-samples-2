@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://carsByYearListView.title"
+      focusComponent="carsDataGrid">
+    <data readOnly="true">
+        <collection id="carsDc"
+                    class="com.company.storedprocedures.entity.Car">
+            <fetchPlan extends="_base"/>
+            <loader id="carsDl"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <layout>
+        <integerField id="yearFilterField" label="msg://year" width="10em" />
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="carsDataGrid.create"/>
+            <button id="editBtn" action="carsDataGrid.edit"/>
+            <button id="removeBtn" action="carsDataGrid.remove"/>
+            <button id="refreshBtn" action="carsDataGrid.refresh"/>
+            <simplePagination id="pagination" dataLoader="carsDl"/>
+        </hbox>
+        <dataGrid id="carsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="carsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+                <action id="refresh" type="list_refresh"/>
+            </actions>
+            <columns>
+                <column property="vin"/>
+                <column property="year"/>
+            </columns>
+        </dataGrid>
+    </layout>
+</view>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://carListView.title"
+      focusComponent="carsDataGrid">
+    <data readOnly="true">
+        <collection id="carsDc"
+                    class="com.company.storedprocedures.entity.Car">
+            <fetchPlan extends="_base">
+                <property name="model" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="carsDl">
+                <query>
+                    <![CDATA[select e from Car e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="carsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="carsDataGrid.create"/>
+            <button id="editBtn" action="carsDataGrid.edit"/>
+            <button id="removeBtn" action="carsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="carsDl"/>
+        </hbox>
+        <dataGrid id="carsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="carsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="vin"/>
+                <column property="year"/>
+                <column property="model"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>
