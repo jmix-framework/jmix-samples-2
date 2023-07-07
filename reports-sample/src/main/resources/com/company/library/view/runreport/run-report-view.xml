@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://runReportView.title">
+    <layout>
+        <vbox spacing="true">
+            <button id="rrcBtn1" text="ReportRunContext v1"/>
+            <button id="rrcBtn2" text="ReportRunContext v2"/>
+            <button id="rrBtn1" text="ReportRunner v1"/>
+            <button id="rrBtn2" text="ReportRunner v2"/>
+            <button id="urrBtn1" text="UIReportRunner run chart report"/>
+            <button id="urrBtn2" text="UIReportRunner run in background"/>
+            <button id="urrBtn3" text="UIReportRunner run multiple reports"/>
+            <button id="importBtn" text="Import button"/>
+        </vbox>
+    </layout>
+</view>

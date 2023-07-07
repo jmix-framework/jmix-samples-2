@@ -25,8 +25,6 @@ public class BookDetailView extends StandardDetailView<Book> {
     public void onInitEntity(final InitEntityEvent<Book> event) {
         RunSingleEntityReportAction<Book> action = actions.create(RunSingleEntityReportAction.ID);
         action.setReportOutputName(null);
-        //action.setEditor(this);
         reportButton.setAction(action);
     }
-    
 }

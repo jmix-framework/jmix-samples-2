@@ -34,6 +34,7 @@
             <button id="createBtn" action="literatureTypesDataGrid.create"/>
             <button id="editBtn" action="literatureTypesDataGrid.edit"/>
             <button id="removeBtn" action="literatureTypesDataGrid.remove"/>
+            <button id="historyBtn" action="literatureTypesDataGrid.showHistory"/>
             <simplePagination id="pagination" dataLoader="literatureTypesDl"/>
         </hbox>
         <dataGrid id="literatureTypesDataGrid"
@@ -44,6 +45,7 @@
                 <action id="create" type="list_create"/>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
+                <action id="showHistory" type="report_showExecutionReportHistory"/>
             </actions>
             <columns>
                 <column property="name"/>

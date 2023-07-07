@@ -37,7 +37,7 @@
             <button id="createBtn" action="booksDataGrid.create"/>
             <button id="editBtn" action="booksDataGrid.edit"/>
             <button id="removeBtn" action="booksDataGrid.remove"/>
-            <button id="runReportsBtn" action="booksDataGrid.runReports"/>
+            <button id="printBtn" action="booksDataGrid.reportPrint"/>
             <button id="runBtn" action="booksDataGrid.run"/>
             <simplePagination id="pagination" dataLoader="booksDl"/>
         </hbox>
@@ -49,7 +49,7 @@
                 <action id="create" type="list_create"/>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
-                <action id="runReports" type="report_runListEntityReport"
+                <action id="reportPrint" type="report_runListEntityReport"
                         text="Print details"/>
                 <action id="run" type="report_runReport"/>
             </actions>
