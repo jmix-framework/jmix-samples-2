@@ -1,0 +1,13 @@
+.jmix-header__logo {
+    display: flex;
+    width: 100px;
+}
+
+.jmix-header__logout {
+    width: 100%;
+}
+
+.jmix-header__logout-logo {
+    display: flex;
+    justify-content: flex-end;
+}
