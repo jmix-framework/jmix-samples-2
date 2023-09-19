@@ -1,0 +1,13 @@
+.demo-header__logo {
+    display: flex;
+    width: 35px;
+}
+
+.demo-header__logout {
+    width: 100%;
+}
+
+.demo-header__logout-logo {
+    display: flex;
+    justify-content: flex-end;
+}

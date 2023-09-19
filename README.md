@@ -12,6 +12,6 @@ To work with an example, clone the repository and open the respective folder in 
 <!-- - [Stored Procedures](stored-procedures-sample) project shows how you can call database stored procedures for loading and saving data. -->
 - [Reports](reports-sample) sample project is used in the [Reports add-on documentation](https://docs.jmix.io/jmix/reports/index.html) .
 - [Stored Procedures](stored-procedures-sample) project shows how you can call database stored procedures for loading and saving data.
-- [Auth server](auth-server-sample) project shows how you can work with an authorization server and a third-party frontend
+- [React frontend](react-frontend-sample) project shows how you can work with a jmix authorization server and a React frontend
 
 <!-- See also the [Jmix UI Samples](https://demo.jmix.io/ui-samples) web application which contains lots of examples related to UI. -->

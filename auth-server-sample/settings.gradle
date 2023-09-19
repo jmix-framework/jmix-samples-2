@@ -1,4 +1,0 @@
-rootProject.name = "auth-server-sample"
-
-include("auth-server-frontend")
-include("auth-server-backend")

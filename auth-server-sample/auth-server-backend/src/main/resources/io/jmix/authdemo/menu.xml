@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<menu-config xmlns="http://jmix.io/schema/flowui/menu">
-
-    <menu id="application" title="msg://io.jmix.authdemo/menu.application.title" opened="true">
-        <item view="ad_User.list" title="msg://io.jmix.authdemo.view.user/UserListView.title"/>
-    </menu>
-
-</menu-config>

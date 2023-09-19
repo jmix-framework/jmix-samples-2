@@ -1,0 +1,4 @@
+rootProject.name = "react-frontend-sample"
+
+include("react-frontend")
+include("jmix-backend")
