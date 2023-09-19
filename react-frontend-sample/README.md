@@ -1,15 +1,15 @@
-# Jmix Auth server demo
+# React frontend sample
 
 ## Overview
 
-The application demonstrates the interaction of the authentication server with a third-party frontend. This example uses a [Jmix](https://www.jmix.ru/) application with an [Auth Server](https://github.com/jmix-framework/jmix/tree/master/jmix-authserver) addon as a backend, and a [React](https://react.dev/) application as a frontend.
+The application demonstrates the interaction of the authentication server with a React frontend. This example uses a [Jmix](https://www.jmix.ru/) application with an [Auth Server](https://github.com/jmix-framework/jmix/tree/master/jmix-authserver) addon as a backend, and a [React](https://react.dev/) application as a frontend.
 
 **Default credentials:**
 
     Username - admin
     Password - admin
 
-## Frontend
+## React frontend
 
 An example of a [React](https://react.dev/) application with the [Ant.d](https://ant.design/) library. To work with oauth2, the library is used [react-oauth2-code-pkce](
 https://www.npmjs.com/package/react-oauth2-code-pkce).
@@ -43,7 +43,7 @@ npm run dev
 ```
 Frontend available on: http://localhost:5173
 
-## Backend
+## Jmix backend
 
 Application backend created on [Jmix](https://www.jmix.ru/) with [Auth server](https://github.com/jmix-framework/jmix/blob/master/jmix-authserver) addon connected.
 
