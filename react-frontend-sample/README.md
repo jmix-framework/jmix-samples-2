@@ -1,66 +1,43 @@
-# React frontend sample
+# React Frontend Sample
 
-## Overview
+This example demonstrates a custom React frontend application working with Jmix backend through the [Generic REST](https://docs.jmix.io/jmix/rest/index.html). The frontend application uses the [OAuth2 Authorization Code](https://docs.jmix.io/jmix/rest/access-control.html#authorization-code-grant) flow for user authentication.  
 
-The application demonstrates the interaction of the authentication server with a React frontend. This example uses a [Jmix](https://www.jmix.ru/) application with an [Auth Server](https://github.com/jmix-framework/jmix/tree/master/jmix-authserver) addon as a backend, and a [React](https://react.dev/) application as a frontend.
+## Jmix Backend Application
 
-**Default credentials:**
+This is a simple Jmix application with the Generic REST and Authorization Server add-ons.
 
-    Username - admin
-    Password - admin
+The Authorization Server is configured in [application.properties](jmix-backend/src/main/resources/application.properties) to use the Authorization Code grant as described in the documentation.
 
-## React frontend
+The backend application provides a custom login form for frontend authentication: [custom-as-login.html](jmix-backend/src/main/resources/templates/custom-as-login.html).
 
-An example of a [React](https://react.dev/) application with the [Ant.d](https://ant.design/) library. To work with oauth2, the library is used [react-oauth2-code-pkce](
-https://www.npmjs.com/package/react-oauth2-code-pkce).
+To start the backend application, open the terminal in `react-frontend-sample/jmix-backend` folder and execute: 
 
-The main setting for oauth2 is in [main.tsx](frontend/src/main.tsx):
-
-```ts
-const authConfig: TAuthConfig = {
-    clientId: 'client',
-    authorizationEndpoint: 'http://localhost:8080/oauth2/authorize',
-    tokenEndpoint: 'http://localhost:8080/oauth2/token',
-    redirectUri: 'http://localhost:5173/',
-    decodeToken: false,
-    onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => window.confirm('Session expired. Refresh page to continue using the site?') && event.login(),
-}
-```
-
-
-**Login page:**
-
-![img.png](images/login-page.png)
-
-**Users page:**
-![img.png](images/users-page.png)
-
-**Start:**
-```
-cd frontend
-npm install
-npm run dev
-```
-Frontend available on: http://localhost:5173
-
-## Jmix backend
-
-Application backend created on [Jmix](https://www.jmix.ru/) with [Auth server](https://github.com/jmix-framework/jmix/blob/master/jmix-authserver) addon connected.
-
-
-Basic auth server configuration, a more detailed description can be found in the [readme](https://github.com/jmix-framework/jmix/blob/master/jmix-authserver/README.md).
-```
-spring.security.oauth2.authorizationserver.client.myclient.registration.client-id=client
-spring.security.oauth2.authorizationserver.client.myclient.registration.client-authentication_methods=none
-spring.security.oauth2.authorizationserver.client.myclient.registration.authorization-grant-types=authorization_code
-spring.security.oauth2.authorizationserver.client.myclient.registration.redirect-uris=http://localhost:5173/
-spring.security.oauth2.authorizationserver.client.myclient.token.access-token-format=reference
-spring.security.oauth2.authorizationserver.client.myclient.require-proof-key=true
-```
-
-**Start**
 ```
 ./gradlew bootRun   
 ```
 
-Backend available on: http://localhost:8080
+The application UI will be available at http://localhost:8080. You can log in to the application with `admin / admin` credentials.
+
+## React Frontend Application
+
+An example of a React application with the [Ant Design](https://ant.design/) UI library. The [react-oauth2-code-pkce](
+https://github.com/soofstad/react-oauth2-pkce) library is used to provide OAuth2 Authorization Code flow.
+
+The OAuth2 settings are defined in [main.tsx](react-frontend/src/main.tsx), see the `authConfig` variable.
+
+To start the frontend application in development mode, open the terminal in `react-frontend-sample/react-frontend` and execute the following commands: 
+```
+npm i
+npm run dev
+```
+
+The frontend UI will be available at http://localhost:5173 (open this URL in a separate browser or in the incognito mode).
+
+The frontend application will redirect to the login page provided by the Authorization Server of the backend app:
+
+![img.png](images/login-page.png)
+
+Enter `admin / admin` credentials and submit the form. You will be redirected to the frontend UI where you can see the list of users obtained from the backend: 
+
+![img.png](images/users-page.png)
+

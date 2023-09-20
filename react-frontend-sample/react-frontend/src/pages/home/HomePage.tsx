@@ -5,7 +5,7 @@ export function HomePage() {
         <>
             <h2>Home</h2>
             <Typography>
-                Welcome to the Jmix + React project
+                Welcome to React frontend for Jmix application
             </Typography>
         </>
     );
