@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/custom-as-login/styles/custom-as-login.css}">
+    <link rel="stylesheet" th:href="@{/custom-as-login/styles/bootstrap.min.css}">
+    <title>Please sign in</title>
+</head>
+<body>
+<form class="as-login-form" th:action="@{/as-login}" method="post">
+    <img th:src="@{/custom-as-login/icons/icon.png}" class="mb-3 mx-auto d-block">
+    <h2>Please sign in</h2>
+    <div class="alert alert-danger" th:if="${param.error}">Bad credentials</div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required autofocus>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Sign in</button>
+</form>
+</body>
+</html>

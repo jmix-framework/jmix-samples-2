@@ -11,6 +11,7 @@ const authConfig: TAuthConfig = {
     authorizationEndpoint: 'http://localhost:8080/oauth2/authorize',
     tokenEndpoint: 'http://localhost:8080/oauth2/token',
     redirectUri: 'http://localhost:5173/',
+    logoutEndpoint: 'http://localhost:8080/logout',
     decodeToken: false,
     onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => window.confirm('Session expired. Refresh page to continue using the site?') && event.login(),
 }
