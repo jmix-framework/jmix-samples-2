@@ -85,6 +85,32 @@
           </option>
         </ModuleSettings>
       </entry>
+      <entry key="io.jmix.react-frontend-sample.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2 />
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
+      <entry key="jmix-backend-for-react-frontend.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2 />
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
       <entry key="library.main">
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
