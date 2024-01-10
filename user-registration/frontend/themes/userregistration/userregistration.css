@@ -1,0 +1,6 @@
+/* Define your styles here */
+
+.registration-form-layout {
+    padding: var(--lumo-space-l);
+    background: var(--lumo-base-color) linear-gradient(var(--lumo-tint-5pct), var(--lumo-tint-5pct));
+}

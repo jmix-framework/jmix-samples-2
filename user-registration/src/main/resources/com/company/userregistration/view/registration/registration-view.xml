@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view">
+    <layout justifyContent="CENTER" alignItems="CENTER"
+            classNames="jmix-login-main-layout">
+        <vbox id="registrationFormWrapper" width="22.5em" alignItems="CENTER"
+              classNames="registration-form-layout">
+            <h2 text="User registration"/>
+            <formLayout>
+                <textField id="usernameField" label="Username" required="true"/>
+                <passwordField id="passwordField" label="Password" required="true"/>
+                <textField id="firstNameField" label="First name"/>
+                <textField id="lastNameField" label="Last name"/>
+                <textField id="emailField" label="Email"/>
+            </formLayout>
+            <button id="registerBtn" text="Register" themeNames="primary" width="100%"/>
+            <button id="alreadyRegisteredBtn" text="Already registered" themeNames="tertiary small"/>
+        </vbox>
+    </layout>
+</view>

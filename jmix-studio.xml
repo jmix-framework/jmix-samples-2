@@ -59,6 +59,19 @@
           </option>
         </ModuleSettings>
       </entry>
+      <entry key="com.company.userregistration.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2 />
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
       <entry key="external-data-sample.main">
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
@@ -151,6 +164,19 @@
         </ModuleSettings>
       </entry>
       <entry key="stored-procedures-sample.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2 />
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
+      <entry key="user-registration.main">
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
             <map>
