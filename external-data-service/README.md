@@ -5,9 +5,11 @@ This is a simple Spring Boot application that exposes several REST endpoints use
 The endpoints are:
 
 * `GET http://loсalhost:18080/tasks`
+* `GET http://loсalhost:18080/tasks/{id}`
 * `POST http://loсalhost:18080/tasks`
 * `POST http://loсalhost:18080/tasks/{id}`
 * `GET http://loсalhost:18080/projects`
+* `GET http://loсalhost:18080/projects/{id}`
 * `POST http://loсalhost:18080/projects`
 * `POST http://loсalhost:18080/projects/{id}`
 

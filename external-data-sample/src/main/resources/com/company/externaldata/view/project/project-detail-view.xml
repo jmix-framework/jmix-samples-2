@@ -5,6 +5,7 @@
     <data>
         <instance id="projectDc"
                   class="com.company.externaldata.entity.Project">
+            <loader id="projectDl"/>
         </instance>
     </data>
     <facets>

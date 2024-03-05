@@ -40,7 +40,7 @@ public class ProjectDataStore implements DataStore {
     @Nullable
     @Override
     public Object load(LoadContext<?> context) {
-        return null;
+        return projectService.loadProject((Long) context.getId());
     }
 
     @Override

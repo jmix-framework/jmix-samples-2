@@ -3,10 +3,10 @@
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
       title="msg://taskListView.title"
       focusComponent="tasksDataGrid">
-    <data readOnly="true">
+    <data>
         <collection id="tasksDc"
                     class="com.company.externaldata.entity.Task">
-            <loader id="tasksDl"/>
+            <loader id="tasksDl" readOnly="true"/>
         </collection>
     </data>
     <facets>

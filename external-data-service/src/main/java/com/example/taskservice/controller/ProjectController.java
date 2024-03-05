@@ -20,6 +20,11 @@ public class ProjectController {
         return projectRepository.findAll();
     }
 
+    @GetMapping("/projects/{id}")
+    public Project load(@PathVariable Long id) {
+        return projectRepository.findById(id).orElse(null);
+    }
+
     @PostMapping("/projects")
     public Project save(@RequestBody Project project) {
         return projectRepository.save(project);

@@ -5,6 +5,7 @@
     <data>
         <instance id="taskDc"
                   class="com.company.externaldata.entity.Task">
+            <loader id="taskDl"/>
         </instance>
     </data>
     <facets>

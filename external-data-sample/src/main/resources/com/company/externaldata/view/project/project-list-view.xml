@@ -3,10 +3,10 @@
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
       title="msg://projectListView.title"
       focusComponent="projectsDataGrid">
-    <data readOnly="true">
+    <data>
         <collection id="projectsDc"
                     class="com.company.externaldata.entity.Project">
-            <loader id="projectsDl">
+            <loader id="projectsDl" readOnly="true">
                 <query>anything</query>
             </loader>
         </collection>

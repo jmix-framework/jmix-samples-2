@@ -20,6 +20,11 @@ public class TaskController {
         return taskRepository.findAll();
     }
 
+    @GetMapping("/tasks/{id}")
+    public Task load(@PathVariable Long id) {
+        return taskRepository.findById(id).orElse(null);
+    }
+
     @PostMapping("/tasks")
     public Task save(@RequestBody Task task) {
         return taskRepository.save(task);

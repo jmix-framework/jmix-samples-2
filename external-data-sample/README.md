@@ -5,9 +5,11 @@ The project demonstrates how to display and manage data received from an externa
 External data for this example is supposed to be provided by a REST service with the following endpoints:
 
 * `GET /tasks` returns a list of tasks
+* `GET /tasks/{id}` returns a task with a given id
 * `POST /tasks` creates a new task
 * `POST /tasks/{id}` updates a task with a given id
 * `GET /projects` returns a list of projects
+* `GET /projects/{id}` returns a project with a given id
 * `POST /projects` creates a new project
 * `POST /projects/{id}` updates a project with a given id
 
