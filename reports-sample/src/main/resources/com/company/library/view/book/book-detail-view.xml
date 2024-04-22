@@ -21,30 +21,37 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="bookDc">
-            <entityPicker id="literatureTypeField" property="literatureType">
-                <actions>
-                    <action id="entityLookup" type="entity_lookup"/>
-                    <action id="entityClear" type="entity_clear"/>
-                </actions>
-            </entityPicker>
-            <textField id="nameField" property="name"/>
-            <textArea id="summaryField" height="9.5em" property="summary"/>
-        </formLayout>
-        <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button action="authorsDataGrid.add"/>
-            <button action="authorsDataGrid.exclude"/>
+        <hbox width="100%" expand="displayIFrame">
+            <vbox width="40em">
+                <formLayout id="form" dataContainer="bookDc">
+                    <entityPicker id="literatureTypeField" property="literatureType">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="nameField" property="name"/>
+                    <textArea id="summaryField" height="9.5em" property="summary"/>
+                    <fileStorageUploadField id="reportField" property="report" dropAllowed="true" fileNameVisible="true"
+                                            clearButtonVisible="true"/>
+                </formLayout>
+                <hbox id="buttonsPanel" classNames="buttons-panel">
+                    <button action="authorsDataGrid.add"/>
+                    <button action="authorsDataGrid.exclude"/>
+                </hbox>
+                <dataGrid id="authorsDataGrid" dataContainer="authorsDc" width="100%" minHeight="20em">
+                    <actions>
+                        <action id="add" type="list_add"/>
+                        <action id="exclude" type="list_exclude"/>
+                    </actions>
+                    <columns>
+                        <column property="firstName"/>
+                        <column property="lastName"/>
+                    </columns>
+                </dataGrid>
+            </vbox>
+            <iframe id="displayIFrame"/>
         </hbox>
-        <dataGrid id="authorsDataGrid" dataContainer="authorsDc" width="100%" minHeight="20em">
-            <actions>
-                <action id="add" type="list_add"/>
-                <action id="exclude" type="list_exclude"/>
-            </actions>
-            <columns>
-                <column property="firstName"/>
-                <column property="lastName"/>
-            </columns>
-        </dataGrid>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

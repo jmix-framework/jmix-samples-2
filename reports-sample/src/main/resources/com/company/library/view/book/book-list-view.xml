@@ -39,6 +39,7 @@
             <button id="removeBtn" action="booksDataGrid.remove"/>
             <button id="printBtn" action="booksDataGrid.reportPrint"/>
             <button id="runBtn" action="booksDataGrid.run"/>
+            <button id="generateBtn" action="booksDataGrid.generateReport"/>
             <simplePagination id="pagination" dataLoader="booksDl"/>
         </hbox>
         <dataGrid id="booksDataGrid"
@@ -52,6 +53,8 @@
                 <action id="reportPrint" type="report_runListEntityReport"
                         text="Print details"/>
                 <action id="run" type="report_runReport"/>
+                <action id="generateReport" type="list_itemTracking" icon="vaadin:file"
+                        text="msg://generateReport.text"/>
             </actions>
             <columns>
                 <column property="name"/>

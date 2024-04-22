@@ -1,5 +1,6 @@
 package com.company.library.entity;
 
+import io.jmix.core.FileRef;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
@@ -26,6 +27,9 @@ public class Book {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @Column(name = "REPORT", length = 1024)
+    private FileRef report;
 
     @InstanceName
     @Column(name = "NAME", nullable = false, length = 50)
@@ -74,6 +78,14 @@ public class Book {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+
+    public FileRef getReport() {
+        return report;
+    }
+
+    public void setReport(FileRef report) {
+        this.report = report;
+    }
 
     public LiteratureType getLiteratureType() {
         return literatureType;
