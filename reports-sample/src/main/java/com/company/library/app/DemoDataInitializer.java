@@ -170,7 +170,7 @@ public class DemoDataInitializer {
         list.add(dataManager.save(book));
 
         book = dataManager.create(Book.class);
-        book.setName("Stewardship: Choosing Service Over Self-Interest");
+        book.setName("Stewardship Choosing Service Over Self-Interest");
         book.setLiteratureType(types.get(2));
         book.setSummary("Stewardship was provocative, even revolutionary, when it was first published in 1993, and it remains " +
                 "every bit as relevant and radical today");
