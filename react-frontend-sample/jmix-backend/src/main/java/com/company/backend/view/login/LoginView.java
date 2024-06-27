@@ -43,7 +43,7 @@ public class LoginView extends StandardView implements LocaleChangeObserver {
     @Autowired
     private LoginViewSupport loginViewSupport;
 
-    @Autowired
+    @ViewComponent
     private MessageBundle messageBundle;
 
     @Autowired
