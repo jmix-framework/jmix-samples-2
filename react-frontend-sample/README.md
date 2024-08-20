@@ -1,6 +1,6 @@
 # React Frontend Sample
 
-This example demonstrates a custom React frontend application working with Jmix backend through the [Generic REST](https://docs.jmix.io/jmix/rest/index.html). The frontend application uses the [OAuth2 Authorization Code](https://docs.jmix.io/jmix/rest/access-control.html#authorization-code-grant) flow for user authentication.  
+This example demonstrates a custom React frontend application working with Jmix backend through the [Generic REST](https://docs.jmix.io/jmix/rest/index.html). The frontend application uses the [OAuth2 Authorization Code](https://docs.jmix.io/jmix/authorization-server/obtaining-tokens.html#authorization-code-grant) flow for user authentication.  
 
 ## Jmix Backend Application
 
