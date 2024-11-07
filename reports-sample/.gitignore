@@ -1,4 +1,5 @@
 .jmix
+jmix-studio.xml
 
 .gradle
 build/
