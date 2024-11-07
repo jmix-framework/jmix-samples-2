@@ -2,6 +2,11 @@
 
 The project demonstrates how to display and manage data received from an external data source using standard Jmix CRUD views.
 
+See also more complex examples of working with external data in the following guides:
+
+- [Integrating Jmix Applications](https://docs.jmix.io/jmix/integrated-apps-guide)
+- [Integrating Applications Using OpenAPI](https://docs.jmix.io/jmix/openapi-integration-guide)
+
 External data for this example is supposed to be provided by a REST service with the following endpoints:
 
 * `GET /tasks` returns a list of tasks
