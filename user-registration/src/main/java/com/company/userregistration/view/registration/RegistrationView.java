@@ -76,6 +76,6 @@ public class RegistrationView extends StandardView {
     }
 
     private void navigateToLoginView() {
-        viewNavigators.view(LoginView.class).navigate();
+        viewNavigators.view(this, LoginView.class).navigate();
     }
 }

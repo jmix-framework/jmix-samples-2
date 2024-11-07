@@ -130,6 +130,6 @@ public class LoginView extends StandardView implements LocaleChangeObserver {
 
     @Subscribe("login")
     public void onLoginForgotPassword(final AbstractLogin.ForgotPasswordEvent event) {
-        viewNavigators.view(RegistrationView.class).navigate();
+        viewNavigators.view(this, RegistrationView.class).navigate();
     }
 }

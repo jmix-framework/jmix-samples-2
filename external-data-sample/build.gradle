@@ -1,13 +1,14 @@
 plugins {
-    id 'io.jmix' version '2.3.4'
+    id 'io.jmix' version '2.4.0'
     id 'java'
+    id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.9'
 }
 
 apply plugin: 'org.springframework.boot'
 apply plugin: 'com.vaadin'
 
 jmix {
-    bomVersion = '2.3.4'
+    bomVersion = '2.4.0'
 }
 
 group = 'com.company'
@@ -22,8 +23,6 @@ repositories {
 
 dependencies {
     implementation 'io.jmix.core:jmix-core-starter'
-    implementation 'io.jmix.pessimisticlock:jmix-pessimisticlock-starter'
-    implementation 'io.jmix.pessimisticlock:jmix-pessimisticlock-flowui-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.security:jmix-security-starter'
     implementation 'io.jmix.security:jmix-security-flowui-starter'
@@ -45,6 +44,17 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
+}
+
+configurations.implementation {
+    exclude group: 'com.vaadin', module: 'hilla'
+    exclude group: 'com.vaadin', module: 'hilla-dev'
+}
+
+idea {
+    module {
+        excludeDirs.addAll(files '.jmix', 'node_modules', 'src/main/frontend/generated/', 'src/main/bundles')
+    }
 }
 
 test {
