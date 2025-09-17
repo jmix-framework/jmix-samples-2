@@ -2,7 +2,6 @@ package com.company.externaldata.app;
 
 import com.company.externaldata.entity.Task;
 import io.jmix.core.EntityStates;
-import io.jmix.core.MetadataTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,10 +58,6 @@ public class TaskService {
                 TASKS_BASE_URL;
         ResponseEntity<Task> response = restTemplate.postForEntity(url, task, Task.class);
         Task savedTask = Objects.requireNonNull(response.getBody());
-        if (task.getId() == null) {
-            // set new ID to the passed instance to let the framework match the saved instance with the original one
-            task.setId(savedTask.getId());
-        }
         // set not-new state to the DTO
         entityStates.setNew(savedTask, false);
         return savedTask;
