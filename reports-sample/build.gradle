@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '2.8.2'
+    id 'io.jmix' version '3.0.1'
     id 'java'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.9'
 }
@@ -8,7 +8,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'com.vaadin'
 
 jmix {
-    bomVersion = '2.8.2'
+    bomVersion = '3.0.1'
 }
 
 group = 'com.company'
@@ -51,6 +51,8 @@ dependencies {
     implementation 'io.jmix.authserver:jmix-authserver-starter'
     implementation 'io.jmix.quartz:jmix-quartz-starter'
     implementation 'io.jmix.quartz:jmix-quartz-flowui-starter'
+    implementation 'com.vaadin:vaadin-dev'
+    testImplementation 'org.springframework.boot:spring-boot-jdbc-test'
 }
 
 configurations.implementation {
@@ -66,4 +68,9 @@ idea {
 
 test {
     useJUnitPlatform()
+}
+
+vaadin {
+    optimizeBundle = false
+    productionMode = false
 }
